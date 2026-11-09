@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=CPU Control
+GenericName=Control de procesador Ryzen
+Comment=Monitor por núcleo, PBO, Curve Optimizer y frecuencia para AMD Ryzen
+Exec=cpu-control
+Icon=org.cpucontrol.CpuControl
+Terminal=false
+Categories=System;Monitor;Settings;GTK;
+Keywords=ryzen;amd;cpu;pbo;curve;optimizer;overclock;undervolt;temperatura;
+StartupNotify=true

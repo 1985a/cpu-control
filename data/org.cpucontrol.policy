@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>CPU Control</vendor>
+  <action id="org.cpucontrol.apply">
+    <description>Apply AMD Ryzen CPU settings</description>
+    <description xml:lang="es">Aplicar ajustes del procesador AMD Ryzen</description>
+    <message>Authentication is required to change CPU power limits, voltage curve and frequency</message>
+    <message xml:lang="es">Se requiere autenticación para cambiar límites de potencia, curva de voltaje y frecuencia del procesador</message>
+    <icon_name>org.cpucontrol.CpuControl</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/cpu-control/cpu-control-helper</annotate>
+  </action>
+</policyconfig>

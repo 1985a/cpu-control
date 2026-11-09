@@ -1,0 +1,21 @@
+# Configuración de ruff (análisis estático). Ejecutar: uvx ruff check .
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "SIM", "PL", "RUF", "C4", "PIE", "RET", "S"]
+ignore = [
+    "PLR0911", "PLR0912", "PLR0913", "PLR0915", "PLR0917", "PLR2004", "PLC0415",  # tamaño/estilo
+    "S603", "S607",       # subprocess con lista de argumentos y sin shell: es lo correcto
+    "RUF001", "RUF003",   # textos en español con «–», «×» y «°» a propósito
+]
+
+[tool.ruff.lint.per-file-ignores]
+# GTK: gi.require_version() va antes de importar gi.repository. Los callbacks terminan
+# con `return finish(...)`; GTK ignora su valor de retorno.
+"cpucontrol/app.py" = ["E402", "RET502", "RET503"]
+"cpucontrol/widgets.py" = ["E402"]
+"cpucontrol/pmtables.py" = ["E501"]   # tablas de la PM de AMD: una fila por línea
+# Pruebas: assert es la herramienta; los archivos simulados se escriben de una vez.
+"tests/*" = ["S101", "SIM115", "E402", "E501"]   # datos simulados en una línea

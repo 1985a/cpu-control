@@ -1,0 +1,6 @@
+#!/bin/sh
+# Algunos ajustes del SMU se pierden al suspender: reaplicar el perfil al despertar.
+case "$1" in
+  post) systemctl is-active -q cpu-control.service && systemctl reload cpu-control.service ;;
+esac
+exit 0

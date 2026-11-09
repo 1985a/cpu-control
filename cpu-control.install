@@ -1,0 +1,17 @@
+post_install() {
+  echo ">> CPU Control instalado."
+  echo "   1) Activa el servicio:   sudo systemctl enable --now cpu-control.service"
+  echo "   2) Para PBO / Curve Optimizer instala ryzen_smu (AUR: ryzen_smu-dkms-git) y cárgalo al iniciar:"
+  echo "        echo ryzen_smu | sudo tee /etc/modules-load.d/ryzen_smu.conf"
+  echo "   3) En Sway necesitas un agente de polkit, por ejemplo:"
+  echo "        exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+  echo "   La pestaña Diagnóstico te dice qué falta en tu equipo."
+}
+
+post_upgrade() {
+  systemctl try-restart cpu-control.service >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+  systemctl disable --now cpu-control.service >/dev/null 2>&1 || true
+}

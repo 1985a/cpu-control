@@ -1,0 +1,8 @@
+#!/usr/bin/python3 -I
+# Corre como root vía pkexec: modo aislado (-I) y solo importa desde la ruta del sistema.
+import sys
+
+sys.path.insert(0, "/usr/lib/cpu-control")
+from cpucontrol.helper import main  # noqa: E402
+
+main()

@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+"""Lanzador de la interfaz gráfica."""
+import os
+import sys
+
+here = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+for path in (here, "/usr/lib/cpu-control"):
+    if os.path.isdir(os.path.join(path, "cpucontrol")):
+        sys.path.insert(0, path)
+        break
+
+from cpucontrol.app import main  # noqa: E402
+
+sys.exit(main(sys.argv))
